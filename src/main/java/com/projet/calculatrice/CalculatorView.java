@@ -1,14 +1,10 @@
 package com.projet.calculatrice;
 
-import lombok.Getter;
-
 import javax.swing.*;
 import java.awt.*;
 
-public class CalculatorView extends JFrame {
-    @Getter
+public class CalculatorView extends JFrame implements ICalculatorView {
     private JTextField textField = new JTextField();
-    @Getter
     private JButton[] buttons = new JButton[16];
     private String[] buttonLabels = {
             "7", "8", "9", "/",
@@ -36,4 +32,20 @@ public class CalculatorView extends JFrame {
         add(panel, BorderLayout.CENTER);
     }
 
+    @Override
+    public void setTextField(String value) {
+        textField.setText(value);
+    }
+
+    @Override
+    public String getTextField() {
+        return textField.getText();
+    }
+
+    @Override
+    public void setButtonHandler(ButtonHandler handler) {
+        for (JButton button : buttons) {
+            button.addActionListener(e -> handler.handle(button.getText()));
+        }
+    }
 }

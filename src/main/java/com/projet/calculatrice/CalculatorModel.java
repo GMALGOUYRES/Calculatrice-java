@@ -17,7 +17,7 @@ public class CalculatorModel {
 
     public void divide(double firstNumber, double secondNumber) {
         if (secondNumber == 0) {
-            throw new ArithmeticException("Cannot divide by zero");
+            throw new ArithmeticException("Impossible de diviser par zéro");
         }
         result = firstNumber / secondNumber;
     }
